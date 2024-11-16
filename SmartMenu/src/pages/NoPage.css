@@ -1,0 +1,38 @@
+.no-page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding-left: 10%;
+    padding-right: 10%;
+    background-color: #f0f4f8;
+    color: #333;
+    text-align: center;
+}
+
+.no-page-title {
+    font-size: 96px;
+    margin-bottom: 16px;
+    color: #ff6f61;
+}
+
+.no-page-message {
+    font-size: 20px;
+    margin-bottom: 24px;
+}
+
+.no-page-link {
+    font-size: 18px;
+    color: #007bff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.no-page-link:hover {
+    background-color: #007bff;
+    color: #fff;
+}
