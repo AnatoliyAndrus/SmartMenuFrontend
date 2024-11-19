@@ -10,8 +10,10 @@ import Menu from "./components/Menu";
 import Payment from "./components/Payment";
 import Review from "./components/Review";
 import LoginPage from "./pages/LoginPage";
+import WaiterPage from "./pages/WaiterPage";
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import WaiterOrdersPage from "./pages/WaiterOrdersPage";
 
 function App() {
 
@@ -26,7 +28,10 @@ function App() {
         </Route>
         <Route path="admin" element={<AdminPage/>} />
         <Route path="orders" element={<OrdersPage/>} />
-        <Route path="register-order" element={<RegisterOrderPage/>} />
+        <Route path="waiter" element={<WaiterPage/>}>
+          <Route index element={<WaiterOrdersPage/>} />
+          <Route path="register-order" element={<RegisterOrderPage/>} />
+        </Route>
         <Route path="login" element={<LoginPage/>}/>
         <Route path="*" element={<NoPage />} />
       </Routes>

@@ -9,6 +9,7 @@ function RegisterOrderPage() {
     const [orderItems, setOrderItems] = useState([]);
     const [selectedItem, setSelectedItem] = useState(null);
     const [quantity, setQuantity] = useState(1);
+    const [specialInstructions, setSpecialInstructions] = useState("")
     const [showModal, setShowModal] = useState(false);
   
     useEffect(() => {
@@ -19,9 +20,10 @@ function RegisterOrderPage() {
   
     const handleAddItem = () => {
       if (selectedItem && quantity > 0) {
-        setOrderItems([...orderItems, { menuItemId: selectedItem.menuItemId, name: selectedItem.name, quantity }]);
+        setOrderItems([...orderItems, { menuItemId: selectedItem.menuItemId, name: selectedItem.name, quantity, specialInstructions}]);
         setSelectedItem(null);
         setQuantity(1);
+        setSpecialInstructions("");
         setShowModal(false);
       }
     };
@@ -82,8 +84,8 @@ function RegisterOrderPage() {
             </li>
           )): "no items"}
         </ul>
-        <button className="btn btn-primary" onClick={() => setShowModal(true)}>Add Item</button>
-        <button className="btn btn-success" onClick={handleSubmit}>Submit Order</button>
+        <button className="btn btn-primary m-2" onClick={() => setShowModal(true)}>Add Item</button>
+        <button className="btn btn-success m-2" onClick={handleSubmit}>Submit Order</button>
   
         {showModal && (
           <div className="modal show d-block" tabIndex="-1" role="dialog">
@@ -114,6 +116,15 @@ function RegisterOrderPage() {
                       value={quantity}
                       min="1"
                       onChange={e => setQuantity(parseInt(e.target.value, 10))}
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label className="form-label">Special instructions</label>
+                    <textarea
+                      className="form-control"
+                      value={specialInstructions}
+                      min="1"
+                      onChange={e => setSpecialInstructions(e.target.value)}
                     />
                   </div>
                 </div>

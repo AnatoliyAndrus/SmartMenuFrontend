@@ -14,8 +14,9 @@ export default function Menu(){
     )
 
     return (<>
-    {
+        
         <div className='menu-item-container'>
+        <h1>Menu</h1>
         {menuItems.map((item) => (
           <div key={item.id}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
@@ -33,7 +34,6 @@ export default function Menu(){
             </div>
           </div>
         ))}
-      </div>
-    }
+        </div>
     </>)
 }
