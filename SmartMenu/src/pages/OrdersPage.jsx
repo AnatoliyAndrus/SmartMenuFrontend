@@ -1,71 +1,29 @@
 import { useState, useEffect } from "react";
+import { getPendingOrders, markOrderItemAsDone } from "../services/order-service";
 
 const OrdersPage = () => {
-  // Mock data
-  const mockOrders = [
-    {
-      orderId: 1,
-      orderTime: "2024-11-18T12:34:56",
-      tableId: 3,
-      waiterId: 5,
-      orderItems: [
-        {
-          menuItemName: "Pizza Margherita",
-          quantity: 2,
-          specialInstructions: "Extra cheese",
-          isDone: false,
-        },
-        {
-          menuItemName: "Tiramisu",
-          quantity: 1,
-          specialInstructions: "",
-          isDone: true,
-        },
-      ],
-    },
-    {
-      orderId: 2,
-      orderTime: "2024-11-18T13:45:00",
-      tableId: 4,
-      waiterId: 7,
-      orderItems: [
-        {
-          menuItemName: "Lasagna",
-          quantity: 1,
-          specialInstructions: "No garlic",
-          isDone: false,
-        },
-        {
-          menuItemName: "Espresso",
-          quantity: 2,
-          specialInstructions: "",
-          isDone: false,
-        },
-      ],
-    },
-  ];
 
   const [orders, setOrders] = useState([]);
 
-  // Mock API call
   useEffect(() => {
-    // Imitating a server call
-    setOrders(mockOrders);
+    getPendingOrders().then(response=>setOrders(response.data))
   }, []);
 
-  const markAsDone = (orderId, itemIndex) => {
-    setOrders((prevOrders) =>
-      prevOrders.map((order) =>
-        order.orderId === orderId
-          ? {
-              ...order,
-              orderItems: order.orderItems.map((item, index) =>
-                index === itemIndex ? { ...item, isDone: true } : item
-              ),
-            }
-          : order
-      )
-    );
+  const markAsDone = (item, itemIndex, orderId) => {
+    markOrderItemAsDone(item.orderItemId).then(()=>{
+      setOrders((prevOrders) =>
+        prevOrders.map((order) =>
+          order.orderId === orderId
+            ? {
+                ...order,
+                orderItems: order.orderItems.map((item, index) =>
+                  index === itemIndex ? { ...item, isDone: true } : item
+                ),
+              }
+            : order
+        )
+      );
+    })
   };
 
   return (
@@ -113,7 +71,7 @@ const OrdersPage = () => {
                         {!item.isDone && (
                           <button
                             className="btn btn-sm btn-primary"
-                            onClick={() => markAsDone(order.orderId, index)}
+                            onClick={() => markAsDone(item, index, order.orderId)}
                           >
                             Mark as Done
                           </button>

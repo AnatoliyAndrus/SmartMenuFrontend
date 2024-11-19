@@ -21,10 +21,10 @@ export default function ClientHome() {
     )
 
     return (
-        <div style={{display:'flex', flexDirection:'column'}}>
-            <h1>Ласкаво просимо</h1>
-            <Link to="menu" className="client-link">Меню</Link>
-            <Link to={isActive?`payment?table=${table}`:'#'} className="client-link">Оплатити</Link>
+        <div style={{display:'flex', flexDirection:'column'}} className="mt-4">
+            <h1>Welcome</h1>
+            <Link to="menu" className="client-link">Menu</Link>
+            <Link to={isActive?`payment?table=${table}`:'#'} className="client-link">Pay</Link>
         </div>
     );
 }

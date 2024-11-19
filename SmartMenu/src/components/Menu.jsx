@@ -4,18 +4,15 @@ import { getAllMenuItems } from "../services/menu-service";
 export default function Menu(){
     const [menuItems, setMenuItems] = useState([])
 
+    const fetchData = () => getAllMenuItems().then(response=>setMenuItems(response.data));
     useEffect(() => {
-        async function fetchMenuItems(){
-            const data = await getAllMenuItems()
-            setMenuItems(data)
-        }
-        fetchMenuItems()
+        fetchData();
     }, []
     )
 
     return (<>
         
-        <div className='menu-item-container'>
+        <div className='menu-item-container mt-4'>
         <h1>Menu</h1>
         {menuItems.map((item) => (
           <div key={item.id}>

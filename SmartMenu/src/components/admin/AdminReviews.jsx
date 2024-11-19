@@ -1,30 +1,15 @@
 import { useState, useEffect } from "react";
 import { FaStar, FaRegStar } from "react-icons/fa";
+import { getAllReviews } from "../../services/reviews-service";
 
 export default function AdminReviews() {
-  // Mock data
-  const mockReviews = [
-    {
-      reviewId: 1,
-      rating: 5,
-      reviewTime: "2024-11-18T12:34:56",
-    },
-    {
-      reviewId: 2,
-      rating: 3,
-      reviewTime: "2024-11-18T13:45:00",
-    },
-    {
-      reviewId: 3,
-      rating: 4,
-      reviewTime: "2024-11-18T14:15:30",
-    },
-  ];
 
   const [reviews, setReviews] = useState([]);
 
+  const fetchData = () => getAllReviews().then(response=>setReviews(response.data));
+
   useEffect(() => {
-    setReviews(mockReviews);
+    fetchData();
   }, []);
 
   const renderStars = (rating) => {
@@ -56,6 +41,9 @@ export default function AdminReviews() {
                   <p className="card-text">
                     Review Time:{" "}
                     {new Date(review.reviewTime).toLocaleString()}
+                  </p>
+                  <p className="card-text">
+                    {review.comment}
                   </p>
                 </div>
               </div>

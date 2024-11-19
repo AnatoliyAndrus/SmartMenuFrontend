@@ -14,7 +14,7 @@ function RegisterOrderPage() {
   
     useEffect(() => {
       getAllMenuItems().then((items) => {
-        setMenuItems(items)
+        setMenuItems(items.data)
       })
     }, []);
   
@@ -38,7 +38,8 @@ function RegisterOrderPage() {
         tableId: parseInt(tableId, 10),
         orderItems: orderItems.map(item => ({
           menuItemId: item.menuItemId,
-          quantity: item.quantity
+          quantity: item.quantity,
+          specialInstructions: item.specialInstructions
         }))
       };
   

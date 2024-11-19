@@ -1,17 +1,18 @@
+import apiClient from "../utils/api-client";
 
 export async function getAllWaiters() {
-    return []
+    return apiClient.get('waiters');
 }
 
 export async function addWaiter(waiterData) {
-    return null;
+    return apiClient.post('waiters', waiterData);
 }
 
-export async function editWaiter(waiterId) {
-    return null;
+export async function editWaiter(waiterData) {
+    return apiClient.patch(`waiters/${waiterData.waiterId}`, waiterData);
 }
 
 export async function deleteWaiter(waiterId) {
-    return null;
+    return apiClient.delete(`waiters/${waiterId}`);
 }
 

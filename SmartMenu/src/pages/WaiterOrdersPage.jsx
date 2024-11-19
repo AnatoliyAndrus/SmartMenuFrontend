@@ -1,42 +1,21 @@
 import { useState, useEffect } from "react";
+import { getActiveOrders } from "../services/order-service";
+import { cancelOrder } from "../services/order-service";
 
 const WaiterOrdersPage = () => {
-  const mockOrders = [
-    {
-      orderId: 1,
-      orderTime: "2024-11-18T12:34:56",
-      tableId: 3,
-      waiterId: 5,
-      status: "Pending",
-    },
-    {
-      orderId: 2,
-      orderTime: "2024-11-18T13:45:00",
-      tableId: 4,
-      waiterId: 5,
-      status: "Pending",
-    },
-    {
-      orderId: 3,
-      orderTime: "2024-11-18T14:15:30",
-      tableId: 2,
-      waiterId: 5,
-      status: "Completed",
-    },
-  ];
 
   const [orders, setOrders] = useState([]);
 
-  // Загружаем данные
   useEffect(() => {
-    setOrders(mockOrders);
+    getActiveOrders().then((activeOrders) => setOrders(activeOrders.data));
   }, []);
 
-  // Функция для отмены заказа
-  const cancelOrder = (orderId) => {
-    setOrders((prevOrders) =>
-      prevOrders.filter((order) => order.orderId !== orderId)
-    );
+  const cancelOrderById = (orderId) => {
+    cancelOrder(orderId).then(response => {
+      setOrders((prevOrders) =>
+        prevOrders.filter((order) => order.orderId !== orderId)
+      );
+    })
   };
 
   return (
@@ -78,7 +57,7 @@ const WaiterOrdersPage = () => {
                   {order.status !== "Completed" && (
                     <button
                       className="btn btn-sm btn-danger"
-                      onClick={() => cancelOrder(order.orderId)}
+                      onClick={() => cancelOrderById(order.orderId)}
                     >
                       Cancel
                     </button>

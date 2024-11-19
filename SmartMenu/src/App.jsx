@@ -8,7 +8,6 @@ import ClientPage from "./pages/ClientPage";
 import ClientHome from "./components/ClientHome";
 import Menu from "./components/Menu";
 import Payment from "./components/Payment";
-import Review from "./components/Review";
 import LoginPage from "./pages/LoginPage";
 import WaiterPage from "./pages/WaiterPage";
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
@@ -24,7 +23,6 @@ function App() {
           <Route index element={<ClientHome/>}/>
           <Route path="menu" element={<Menu/>}/>
           <Route path="payment" element={<Payment/>}/>
-          <Route path="review" element={<Review/>}/>
         </Route>
         <Route path="admin" element={<AdminPage/>} />
         <Route path="orders" element={<OrdersPage/>} />

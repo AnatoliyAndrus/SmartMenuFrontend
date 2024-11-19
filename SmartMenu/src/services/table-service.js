@@ -1,9 +1,17 @@
+import apiClient from "../utils/api-client"
 
 export async function hasActiveOrder(tableId) {
-
-    return true
+    return apiClient.get(`tables/${tableId}/has-active-order`)
 }
 
 export async function getTableAmount(){
-    return 10
+    return apiClient.get('tables').then(response => response.data.length )
+}
+
+export function addTable(){
+    return apiClient.post('tables')   
+}
+
+export function removeTable(){
+    return apiClient.delete('tables')
 }

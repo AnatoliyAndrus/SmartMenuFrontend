@@ -19,12 +19,13 @@ function LoginPage() {
                 return;
             }
 
-            const response = await axios.post('http://localhost:8080/auth/login', { email, password });
+            const response = await axios.post('http://localhost:8080/api/auth/sign-in', { email, password });
             console.log('Login successful:', response.data);
-            navigation('/admin');
+            localStorage.setItem('token', response.data.jwt);
+            navigation('/waiter');
         } catch (error) {
             console.error('Login failed:', error.response ? error.response.data : error.message);
-            setError('Invalid username or password.');
+            setError('Invalid email or password.');
         }
     };
 

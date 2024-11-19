@@ -8,26 +8,25 @@ export default function AdminWaiters() {
     const [currentWaiter, setCurrentWaiter] = useState({});
     const [isAddOpened, setAddOpened] = useState(false);
   
+    const fetchData = () => getAllWaiters().then((response) => setWaiters(response.data))
     useEffect(() => {
-        const fetchWaiters = async () => {
-            setWaiters(await getAllWaiters())
-        }
-        fetchWaiters();
-
+      fetchData();
     }, []);
   
     const handleDelete = (id) => {
-      deleteWaiter(id);
+      deleteWaiter(id).then((response) => fetchData());
     };
   
     const handleEdit = (waiter) => {
       setCurrentWaiter(waiter);
+      setIsEditOpened(true);
     };
   
     const handleSave = () => {
       editWaiter(currentWaiter).then(()=>{
         setCurrentWaiter({})
         setIsEditOpened(false);
+        fetchData();
       })
     };
 
@@ -40,6 +39,7 @@ export default function AdminWaiters() {
         addWaiter(currentWaiter).then(() => {
             setAddOpened(false);
             setCurrentWaiter({});
+            fetchData();
         });
     }
   

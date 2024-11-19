@@ -1,20 +1,17 @@
+import apiClient from "../utils/api-client";
 
-export async function getAllMenuItems() {
-    return []
+export function getAllMenuItems() {
+    return apiClient.get("menu-items");
 }
 
-export async function getMenuItemById(itemId){
-    return null
+export function deleteMenuItem(itemId){
+    return apiClient.delete(`menu-items/${itemId}`);
 }
 
-export async function deleteMenuItem(itemId){
-    return null
+export function editMenuItem(editItem){
+    return apiClient.patch(`menu-items/${editItem.menuItemId}`, editItem);
 }
 
-export async function editMenuItem(editItem){
-    return null;
-}
-
-export async function addMenuItem(newItem){
-    return null;
+export function addMenuItem(newItem){
+    return apiClient.post(`menu-items`, newItem);
 }

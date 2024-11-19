@@ -7,16 +7,16 @@ export default function AdminMenu() {
     const [addItem, setAddItem] = useState(false);
     const [itemToAdd, setItemToAdd] = useState({});
   
+    let fetchData = () =>  getAllMenuItems().then(response => setMenuItems(response.data));
+    
     useEffect(() => {
-        let getMenuItems = async () => {
-            setMenuItems(await getAllMenuItems())
-        }
-        getMenuItems();
-
+       fetchData();
     }, []);
   
     const handleDelete = (id) => {
-      deleteMenuItem(id);
+      deleteMenuItem(id).then(response => {
+        setMenuItems(menuItems=>menuItems.filter(menuItem => menuItem.menuItemId !== id))
+      });
     };
   
     const handleEdit = (item) => {
@@ -26,6 +26,7 @@ export default function AdminMenu() {
     const handleSave = () => {
       editMenuItem(editItem).then(()=>{
         setEditItem(null)
+        fetchData();
       })
     };
 
@@ -37,6 +38,7 @@ export default function AdminMenu() {
         addMenuItem(itemToAdd).then(() => {
             setAddItem(false);
             setItemToAdd({});
+            fetchData();
         });
     }
   
