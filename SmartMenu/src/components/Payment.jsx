@@ -59,6 +59,7 @@ export default function Payment(){
                                         <thead className="table-light">
                                             <tr>
                                                 <th scope="col">Menu Item</th>
+                                                <th scope="col">Price</th>
                                                 <th scope="col">Quantity</th>
                                                 <th scope="col">Special Instructions</th>
                                             </tr>
@@ -67,6 +68,7 @@ export default function Payment(){
                                             {orderData.orderItems&&orderData.orderItems.map((item, index) => (
                                                 <tr key={index}>
                                                     <td>{item.menuItemName}</td>
+                                                    <td>{item.quantity}x${item.price}</td>
                                                     <td>{item.quantity}</td>
                                                     <td>{item.specialInstructions || "None"}</td>
                                                 </tr>

@@ -6,8 +6,13 @@ const WaiterOrdersPage = () => {
 
   const [orders, setOrders] = useState([]);
 
+  const fetchData = () => getActiveOrders().then((activeOrders) => setOrders(activeOrders.data));
+
   useEffect(() => {
-    getActiveOrders().then((activeOrders) => setOrders(activeOrders.data));
+    fetchData();
+    const intervalId = setInterval(fetchData, 3000);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   const cancelOrderById = (orderId) => {
