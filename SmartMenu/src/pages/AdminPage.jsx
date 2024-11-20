@@ -1,10 +1,11 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import AdminMenu from '../components/admin/AdminMenu.jsx';
 import AdminWaiters from '../components/admin/AdminWaiters.jsx';
 import AdminReviews from '../components/admin/AdminReviews.jsx';
 import AdminTables from '../components/admin/AdminTables.jsx';
 import AdminUsers from '../components/admin/AdminUsers.jsx';
+import { getTableAmount } from '../services/table-service.js';
 
 export default function AdminPage() {
   const [activeComponent, setActiveComponent] = useState('Menu');
@@ -25,6 +26,10 @@ export default function AdminPage() {
         return <AdminMenu />;
     }
   };
+
+  useEffect(() => {
+    getTableAmount();
+  }, [])
 
   return (
     <div className="container mt-4">

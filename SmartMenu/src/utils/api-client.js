@@ -15,9 +15,15 @@ apiClient.interceptors.request.use((config) => {
 
 
 apiClient.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    if (error.response && error.response.status === 403) {
+  (response) => {
+    console.log("SUCCESS");
+    console.log(response);
+    return response;
+  },
+  (error) => {;
+    console.log("ERROR");
+    console.log(error);
+    if (error.code === 'ERR_NETWORK') {
       window.location.href = '/login';
     }
     return Promise.reject(error);

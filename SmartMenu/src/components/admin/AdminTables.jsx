@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { addTable, getTableAmount, removeTable } from "../../services/table-service"
+import { addTable, getTableAmount, } from "../../services/table-service"
 
 export default function AdminTables(){
     const [tableAmount, setTableAmount] = useState(1)
@@ -14,16 +14,11 @@ export default function AdminTables(){
         addTable().then(() => fetchData())
     }
 
-    const handleRemoveTable = () => {
-        removeTable().then(() => fetchData())
-    }
-
     return (<div className="container">
         <p>
             Currently system has tables from 1 to {tableAmount}
         </p>
         <button className="btn btn-primary" onClick={handleAddTable}>Add table</button>
-        <button className="btn btn-danger" onClick={handleRemoveTable}>Remove table</button>
     </div>
     )
 }

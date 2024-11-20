@@ -22,7 +22,7 @@ function LoginPage() {
             const response = await axios.post('http://localhost:8080/api/auth/sign-in', { email, password });
             console.log('Login successful:', response.data);
             localStorage.setItem('token', response.data.jwt);
-            navigation('/waiter');
+            navigation('/navigation');
         } catch (error) {
             console.error('Login failed:', error.response ? error.response.data : error.message);
             setError('Invalid email or password.');

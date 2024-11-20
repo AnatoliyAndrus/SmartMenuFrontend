@@ -30,7 +30,7 @@ export default function Menu() {
                             <div className="flex flex-col mt-2">
                                 <div className="title-price flex justify-between">
                                     <h5 className="font-bold">{item.name}</h5>
-                                    <small className="text-gray-600">Price: {item.price}</small>
+                                    <small className="text-gray-600">Price: ${item.price}</small>
                                 </div>
                                 <p className="menu-description text-gray-700 text-sm mt-1">
                                     {item.description}

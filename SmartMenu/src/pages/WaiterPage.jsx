@@ -1,8 +1,12 @@
+import { useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { getPendingOrders } from "../services/order-service";
 
 
 export default function WaiterPage(){
-    
+    useEffect(()=>{
+        getPendingOrders();
+    }, [])
 
     return(
         <>

@@ -13,6 +13,7 @@ import WaiterPage from "./pages/WaiterPage";
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import WaiterOrdersPage from "./pages/WaiterOrdersPage";
+import NavigationPage from "./pages/NavigationPage";
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
           <Route path="register-order" element={<RegisterOrderPage/>} />
         </Route>
         <Route path="login" element={<LoginPage/>}/>
+        <Route path="navigation" element={<NavigationPage/>}></Route>
         <Route path="*" element={<NoPage />} />
       </Routes>
     </BrowserRouter>
