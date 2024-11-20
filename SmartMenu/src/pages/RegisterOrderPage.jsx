@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAllMenuItems } from "../services/menu-service";
 import { sendOrderRequest } from "../services/order-service";
+import { useNavigate } from "react-router-dom";
 
 function RegisterOrderPage() {
     const [waiterId, setWaiterId] = useState('');
@@ -11,6 +12,8 @@ function RegisterOrderPage() {
     const [quantity, setQuantity] = useState(1);
     const [specialInstructions, setSpecialInstructions] = useState("")
     const [showModal, setShowModal] = useState(false);
+
+    const navigation = useNavigate()
   
     useEffect(() => {
       getAllMenuItems().then((items) => {
@@ -46,9 +49,8 @@ function RegisterOrderPage() {
       sendOrderRequest(orderData)
         .then(response => {
           alert('Order successfully registered!');
-          setWaiterId('');
-          setTableId('');
-          setOrderItems([]);
+          
+          navigation("/waiter");
         })
         .catch(error => {
           console.error('Error submitting order:', error);
