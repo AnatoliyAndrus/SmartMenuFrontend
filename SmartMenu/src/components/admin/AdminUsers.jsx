@@ -56,6 +56,7 @@ export default function AmdinUsers() {
                 <th>ID</th>
                 <th>email</th>
                 <th>role</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>

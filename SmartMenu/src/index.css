@@ -43,7 +43,7 @@ button {
 }
 button:hover {
   border-color: #646cff;
-}
+} 
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -53,4 +53,10 @@ button:focus-visible {
   margin: 0 auto;
   text-align: center;
   width:80%;
+}
+
+@media screen and (max-width: 768px) {
+  #root{
+    width:100%;
+  }
 }

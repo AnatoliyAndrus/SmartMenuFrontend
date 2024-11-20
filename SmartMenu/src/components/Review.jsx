@@ -29,7 +29,7 @@ export default function Review({table}){
 
   return (
     <div className="container mt-5">
-      <h2 className="text-center mb-4">Leave a Review</h2>
+      <h3 className="text-center mb-4">Payment approved. Would you like to leave review?</h3>
       <form onSubmit={handleSubmit} className="p-4 border rounded shadow-sm">
         <div className="mb-3">
           <label htmlFor="rating" className="form-label">
