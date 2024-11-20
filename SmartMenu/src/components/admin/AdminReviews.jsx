@@ -32,7 +32,7 @@ export default function AdminReviews() {
         <div className="row">
           {reviews.map((review) => (
             <div className="col-md-4 mb-4" key={review.reviewId}>
-              <div className="card">
+              <div className="card border-dark">
                 <div className="card-body">
                   <h5 className="card-title"><b>Review ID:</b> {review.reviewId}</h5>
                   <p className="card-text">
