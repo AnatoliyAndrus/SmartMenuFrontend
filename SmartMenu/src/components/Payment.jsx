@@ -34,7 +34,7 @@ export default function Payment(){
     )
 
     return (<div className="mt-4">
-        {tableHasActiveOrder?(<p>There is no active order at your table!</p>):
+        {!tableHasActiveOrder?(<p>There is no active order at your table!</p>):
             (
                 paymentApproved?(
                     <>
