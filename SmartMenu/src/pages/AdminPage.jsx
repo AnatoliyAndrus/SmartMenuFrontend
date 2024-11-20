@@ -4,6 +4,7 @@ import AdminMenu from '../components/admin/AdminMenu.jsx';
 import AdminWaiters from '../components/admin/AdminWaiters.jsx';
 import AdminReviews from '../components/admin/AdminReviews.jsx';
 import AdminTables from '../components/admin/AdminTables.jsx';
+import AdminUsers from '../components/admin/AdminUsers.jsx';
 
 export default function AdminPage() {
   const [activeComponent, setActiveComponent] = useState('Menu');
@@ -18,6 +19,8 @@ export default function AdminPage() {
         return <AdminReviews />;
       case 'Tables':
         return <AdminTables />;
+      case 'Users':
+        return <AdminUsers />;
       default:
         return <AdminMenu />;
     }
@@ -59,6 +62,14 @@ export default function AdminPage() {
                     onClick={() => setActiveComponent('Tables')}
                   >
                     Tables
+                  </button>
+                </li>
+                <li className="nav-item">
+                  <button
+                    className={`nav-link ${activeComponent === 'Users' ? 'active' : ''}`}
+                    onClick={() => setActiveComponent('Users')}
+                  >
+                    Users
                   </button>
                 </li>
               </ul>

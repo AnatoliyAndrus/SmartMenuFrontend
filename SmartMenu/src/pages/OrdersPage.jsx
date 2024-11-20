@@ -4,9 +4,13 @@ import { getPendingOrders, markOrderItemAsDone } from "../services/order-service
 const OrdersPage = () => {
 
   const [orders, setOrders] = useState([]);
-
+  const fetchData = () => getPendingOrders().then(response=>setOrders(response.data));
+  
   useEffect(() => {
-    getPendingOrders().then(response=>setOrders(response.data))
+    fetchData();
+    const intervalId = setInterval(fetchData, 3000);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   const markAsDone = (item, itemIndex, orderId) => {

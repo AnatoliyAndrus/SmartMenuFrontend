@@ -15,3 +15,7 @@ export function addTable(){
 export function removeTable(){
     return apiClient.delete('tables')
 }
+
+export function getActiveOrder(tableId){
+    return apiClient.get(`tables/${tableId}/get-active-order`);
+}

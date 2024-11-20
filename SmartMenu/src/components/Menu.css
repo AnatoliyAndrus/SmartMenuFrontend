@@ -1,0 +1,33 @@
+.menu-item-container {
+    padding: 1rem;
+  }
+  
+  .menu-card {
+    max-width: 100%;
+    background: white;
+  }
+  
+  .menu-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .title-price h5 {
+    font-size: 1.25rem;
+  }
+  
+  .title-price small {
+    font-size: 0.875rem;
+  }
+  
+  .menu-description {
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+
+  /* @media screen and (min-width: 768px) {
+    .menu-card {
+        max-width: 50%;
+    }
+  } */

@@ -70,4 +70,5 @@ button:focus-visible {
 #root{
   margin: 0 auto;
   text-align: center;
+  width:80%;
 }

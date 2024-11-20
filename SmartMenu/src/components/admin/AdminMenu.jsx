@@ -67,7 +67,7 @@ export default function AdminMenu() {
                   <td>{item.name}</td>
                   <td>{item.description}</td>
                   <td>${item.price.toFixed(2)}</td>
-                  <td><a href={item.imageURL} target="_blank" rel="noopener noreferrer">Image</a></td>
+                  <td><a href={item.imageUrl} target="_blank" rel="noopener noreferrer">Image</a></td>
                   <td>
                     <button className="btn btn-warning me-2" onClick={() => handleEdit(item)}>Edit</button>
                     <button className="btn btn-danger" onClick={() => handleDelete(item.menuItemId)}>Delete</button>
@@ -123,8 +123,8 @@ export default function AdminMenu() {
                         required
                         type="text"
                         className="form-control"
-                        value={editItem.imageURL}
-                        onChange={e => setEditItem({ ...editItem, imageURL: e.target.value })}
+                        value={editItem.imageUrl}
+                        onChange={e => setEditItem({ ...editItem, imageUrl: e.target.value })}
                       />
                     </div>
                   </form>
@@ -179,8 +179,8 @@ export default function AdminMenu() {
                       <input
                         type="text"
                         className="form-control"
-                        value={itemToAdd.imageURL||""}
-                        onChange={e => setItemToAdd({ ...itemToAdd, imageURL: e.target.value })}
+                        value={itemToAdd.imageUrl||""}
+                        onChange={e => setItemToAdd({ ...itemToAdd, imageUrl: e.target.value })}
                       />
                     </div>
                   </form>

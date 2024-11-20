@@ -19,3 +19,7 @@ export function cancelOrder(orderId){
 export function markOrderItemAsDone(orderItemId){
     return apiClient.patch(`order-items/${orderItemId}/done`)
 }
+
+export function pay(orderId){
+    return apiClient.patch(`/orders/${orderId}/pay`);
+}

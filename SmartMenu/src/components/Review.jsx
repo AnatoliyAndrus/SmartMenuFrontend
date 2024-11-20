@@ -1,16 +1,14 @@
 import { useState } from "react";
 import { FaStar } from "react-icons/fa";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, } from "react-router-dom";
 import { addReview } from "../services/reviews-service";
 
-export default function Review(){
+export default function Review({table}){
     const navigation = useNavigate();
-    const [searchParams] = useSearchParams();
     const [rating, setRating] = useState(0);
     const [hover, setHover] = useState(0);
     const [comment, setComment] = useState("");
 
-    const table = searchParams.get('table');
 
     const handleSubmit = (e) => {
         e.preventDefault();

@@ -34,16 +34,19 @@ export default function AdminReviews() {
             <div className="col-md-4 mb-4" key={review.reviewId}>
               <div className="card">
                 <div className="card-body">
-                  <h5 className="card-title">Review ID: {review.reviewId}</h5>
+                  <h5 className="card-title"><b>Review ID:</b> {review.reviewId}</h5>
                   <p className="card-text">
-                    Rating: {renderStars(review.rating)}
+                    <b>Rating:</b> {renderStars(review.rating)}
                   </p>
                   <p className="card-text">
-                    Review Time:{" "}
+                    <b>Review Time:</b>{" "}
                     {new Date(review.reviewTime).toLocaleString()}
                   </p>
                   <p className="card-text">
-                    {review.comment}
+                    <b>Waiter:</b>{review.waiterName}
+                  </p>
+                  <p className="card-text">
+                    <b>Comment: </b>{review.comment}
                   </p>
                 </div>
               </div>

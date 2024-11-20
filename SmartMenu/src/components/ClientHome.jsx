@@ -12,10 +12,9 @@ export default function ClientHome() {
 
     useEffect(
         () => {
-            async function checkIsActive(){
-                if(table&&await hasActiveOrder(table)) setActive(true)
-            }
-            checkIsActive()
+           if(table){
+            hasActiveOrder(table).then((response) => {if(response.data) setActive(true)})
+           }
         },
         [table]
     )
@@ -23,8 +22,8 @@ export default function ClientHome() {
     return (
         <div style={{display:'flex', flexDirection:'column'}} className="mt-4">
             <h1>Welcome</h1>
-            <Link to="menu" className="client-link">Menu</Link>
-            <Link to={isActive?`payment?table=${table}`:'#'} className="client-link">Pay</Link>
+            <Link to="menu" className="client-link"><span>Menu</span></Link>
+            <Link to={`payment?table=${table}`} style={isActive?{}:{pointerEvents:'none'}} className="client-link"><span>Pay</span></Link>
         </div>
     );
 }
